@@ -1,0 +1,17 @@
+__dependency__: configs/dual-encoder.yaml, configs/EURLex-4K/dataset.yaml
+expname: dist-de-all_softmax_exp
+desc: "Training dist-de-all (distributed dual-encoder with all labels) with softmax loss"
+
+# Network and loss parameters
+net: dist-de-all
+norm_embs: True
+tau: 0.05
+neg_type: none # dist-de-all nets uses all labels as negatives, so no need to sample negatives in data loading
+loss_criterion: softmax
+loss_sample: True
+
+# Training parameters
+bsz: 512
+gc_bsz: 4096
+lr: 5.e-5
+dropout: 0

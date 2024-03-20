@@ -1,0 +1,2 @@
+dataset: LF-AmazonTitles-1.3M
+tf_max_len: 32

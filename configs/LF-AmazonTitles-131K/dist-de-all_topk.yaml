@@ -1,0 +1,18 @@
+__dependency__: configs/dual-encoder.yaml, configs/LF-AmazonTitles-131K/dataset.yaml
+expname: dist-de-all_decoupled-softmax_exp
+desc: "Training dist-de-all (distributed dual-encoder with all labels) with topk loss"
+
+# Network and loss parameters
+net: dist-de-all
+norm_embs: True
+tau: 0.05
+neg_type: none # dist-de-all nets uses all labels as negatives, so no need to sample negatives in data loading
+loss_criterion: topk
+topk_K: 5
+loss_sample: True
+
+# Training parameters
+bsz: 3000
+gc_bsz: 3000
+lr: 3.e-4
+dropout: 0

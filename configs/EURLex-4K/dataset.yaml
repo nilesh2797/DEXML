@@ -1,0 +1,2 @@
+dataset: EURLex-4K
+tf_max_len: 128
