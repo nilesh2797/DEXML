@@ -1,4 +1,4 @@
-<img src="media/ICLR-logo.svg" height="50" align="right"/>
+<img src="media/ICLR-logo.svg" height="40" align="right"/>
 
 # DEXML
 Codebase for learning dual-encoder models for (extreme) multi-label classification tasks.
