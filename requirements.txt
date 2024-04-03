@@ -1,0 +1,10 @@
+torch
+transformers
+wandb
+numpy
+scipy
+pandas
+tabulate
+tqdm
+sentence-transformers
+accelerate
