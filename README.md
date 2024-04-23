@@ -55,7 +55,7 @@ accelerate launch --config_file configs/accelerate.yaml --num_processes ${num_gp
 | **EURLex-4K** | 86.78 | 60.19 | https://huggingface.co/quicktensor/dexml_eurlex-4k |
 
 ## Notebook Demo
-Coming soon...
+See `dexml.ipynb` notebook or try it in this [colab](https://colab.research.google.com/github/nilesh2797/DEXML/blob/main/dexml.ipynb)
 
 ## Cite
 ```bib
