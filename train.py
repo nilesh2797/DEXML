@@ -90,8 +90,8 @@ for epoch in range(args.num_epochs):
     for i, b in enumerate(t):
         unwrap(net).update_non_parameters(epoch, global_step, data_loader=trn_loader)
         if hasattr(unwrap(net), 'forward_backward'):
-            assert not args.use_grad_scaler, 'Grad scaler not supported with custom forward_backward at the moment'
-            loss = unwrap(net).forward_backward(b, loss_obj.compute_loss)
+            # assert not args.use_grad_scaler, 'Grad scaler not supported with custom forward_backward at the moment'
+            loss = unwrap(net).forward_backward(b, loss_obj.compute_loss, scaler)
         else:
             loss = loss_obj(net, b)
             scaler.scale(loss.float()).backward() if args.use_grad_scaler else accelerator.backward(loss)

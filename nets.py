@@ -382,7 +382,10 @@ class DistDualEncoderAll(DistBaseNetwork):
 
         # backward using gradient caching
         with self.accelerator.no_sync(self):
-            local_xembs.grad, local_yembs.grad = torch.autograd.grad(loss, (local_xembs, local_yembs))
+            if scaler is None:
+                local_xembs.grad, local_yembs.grad = torch.autograd.grad(loss, (local_xembs, local_yembs))
+            else:
+                local_xembs.grad, local_yembs.grad = torch.autograd.grad(scaler.scale(loss), (local_xembs, local_yembs))
 
             # do normal backward through xembs
             torch.autograd.backward(local_xembs, local_xembs.grad)
@@ -454,7 +457,7 @@ class DistDualEncoderHNM(DistDualEncoderAll):
         b = self.accumulate_batch(b)
         self.avg_labels_per_batch[0] += b['batch_y'].shape[0]
         self.avg_labels_per_batch[1] += 1
-        return super().forward_backward(b, loss_fn)
+        return super().forward_backward(b, loss_fn, scaler)
     
     def update_non_parameters(self, epoch, step, *args, **kwargs):
         epoch_end = 'epoch_end' in kwargs and kwargs['epoch_end']

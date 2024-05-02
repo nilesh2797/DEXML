@@ -9,9 +9,11 @@ tau: 1
 neg_type: none # dist-de-all nets uses all labels as negatives, so no need to sample negatives in data loading
 loss_criterion: decoupled-softmax
 loss_sample: True
+amp_encode: True
 
 # Training parameters
-bsz: 512
-gc_bsz: 2048
-lr: 5.e-5
+bsz: 768
+gc_bsz: 512
+lr: 7.e-5
 dropout: 0
+eval_interval: 1

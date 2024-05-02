@@ -181,8 +181,8 @@ def _compute_xmc_metrics(rank_intrsxn_mat, true_mat, K=[1,3,5,10,20,50,100], inv
     res = {'P': {}, 'R': {}, 'nDCG': {}, 'MRR': {}}
     if inv_prop is not None:
         res['PSP'] = {}
-        psp_true_mat = true_mat.copy()
-        psp_true_mat.data[:] = 1
+        psp_true_mat = true_mat.copy().astype(np.float32)
+        psp_true_mat.data[:] = 1.0
         psp_true_mat.data *= inv_prop[psp_true_mat.indices]
 
     for k in K:
@@ -203,8 +203,8 @@ def _compute_xmc_metrics(rank_intrsxn_mat, true_mat, K=[1,3,5,10,20,50,100], inv
         res['MRR'][k] = max_rr.mean()*100.0
 
         if inv_prop is not None:
-            temp_topk_intrsxn_mat = topk_intrsxn_mat.copy()
-            temp_topk_intrsxn_mat.data[:] = 1
+            temp_topk_intrsxn_mat = topk_intrsxn_mat.copy().astype(np.float32)
+            temp_topk_intrsxn_mat.data[:] = 1.0
             temp_topk_intrsxn_mat.data *= inv_prop[temp_topk_intrsxn_mat.indices]
             psp_topk_true_mat = sorted_csr(psp_true_mat, k)
             psp_denom = (psp_topk_true_mat.sum(1)/k).mean()

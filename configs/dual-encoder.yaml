@@ -51,5 +51,5 @@ eval_interval: 5 # Evaluate current model at every specified number of epochs
 eval_topk: 100 # Number of label predictions for each test point during evaluation
 lr: 1.0e-4 # Learning rate for the rest of the parameters
 weight_decay: 0.01 # Optimizer weight decay
-amp_encode: False # Encode input (i.e. transformer forward) using pytorch amp
+amp_encode: True # Encode input (i.e. transformer forward) using pytorch amp
 norm_embs: True # Normalize embeddings
