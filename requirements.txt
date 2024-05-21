@@ -8,3 +8,4 @@ tabulate
 tqdm
 sentence-transformers
 accelerate
+matplotlib
